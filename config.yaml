@@ -43,8 +43,7 @@ fetch_wait: 10
 # Set to 0 to never stop until all messages have been fetched.
 fetch_limit: 0
 
-#publish_dir: "site"
-publish_dir: "docs" # github pages
+publish_dir: "site"
 static_dir: "static"
 per_page: 500
 show_day_index: True
