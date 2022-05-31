@@ -56,8 +56,7 @@ telegram_url: "https://t.me/{id}"
 # phonebook for users who are in your phonebook.
 show_sender_fullname: False
 
-#publish_rss_feed: True
-publish_rss_feed: False
+publish_rss_feed: True
 rss_feed_entries: 100 # Show Latest N messages in the RSS feed.
 
 # Root URL where the site will be hosted. No trailing slash.
