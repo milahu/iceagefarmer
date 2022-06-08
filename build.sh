@@ -17,5 +17,5 @@ sed -i -E 's|<updated>[^<]+</updated>||g' site/index.atom
 #sed -i 's/></>\n</g' site/index.atom site/index.xml
 # done in https://github.com/knadh/tg-archive/pull/70
 
-echo fix indent in xml files
-sed -i -E 's/^ +$//' site/index.atom site/index.xml
+echo remove trailing whitespace in xml files
+sed -i -E 's/ +$//' site/index.atom site/index.xml
