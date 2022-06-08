@@ -11,6 +11,8 @@ do
 git commit -a -m "update"
 git push github
 
+echo "last run: $(date)"
+echo "next run: $(date -d+6hours)"
 sleep 6h
 
 done
