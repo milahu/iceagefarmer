@@ -96,12 +96,12 @@ in
 
 python3Packages.buildPythonApplication rec {
   pname = "tg-archive";
-  version = "unstable-2022-02-17";
+  version = "unstable-2022-06-08";
   src = fetchFromGitHub {
     owner = "knadh";
     repo = "tg-archive";
-    rev = "0eec29ad5977d4aad6def27f285104994ee71f5b";
-    sha256 = "sha256-2ATO3ZkaY5w4JmoUUgf4Bn/UD7u0zu3W5GUqvCdGIB8=";
+    rev = "4e993994229a3cb83e7647bea250ba18a572ca09";
+    sha256 = "sha256-8qlj0J/qi3kTvDwkv5o1MNYPGNhuvX/B/lYD56zetys=";
   };
   # relax dependencies
   postPatch = ''
@@ -117,12 +117,8 @@ python3Packages.buildPythonApplication rec {
       sha256 = "sha256-49ZCrYH5r3ekcv51pJPoHHVfhu1GzEMhfXjvlPBiQn8=";
     })
     (fetchpatch {
-      url = "https://github.com/knadh/tg-archive/pull/65.diff";
-      sha256 = "sha256-Ul0ZMIZf2OY0oADVoqwfvQJpc1SoZ6DhsAafolFpXII=";
-    })
-    (fetchpatch {
-      url = "https://github.com/knadh/tg-archive/pull/66.diff";
-      sha256 = "sha256-bQS2nY++VqEabmCy1Bj70VEx4DHMLO/69Q6TvMH6HNw=";
+      url = "https://github.com/knadh/tg-archive/pull/70.diff";
+      sha256 = "sha256-4xm6XCa/DzRDHHxbBZDTruPh0fhanf9qFivhEqZme3w=";
     })
   ];
   propagatedBuildInputs = with python3Packages; [
