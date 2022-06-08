@@ -12,3 +12,6 @@ echo making timeless build
 # https://github.com/knadh/tg-archive/issues/68
 sed -i -E 's|<lastBuildDate>[^<]+</lastBuildDate>||g' site/index.xml
 sed -i -E 's|<updated>[^<]+</updated>||g' site/index.atom
+
+echo prettify xml to reduce diff noise
+sed -i 's/></>\n</g' site/index.atom site/index.xml
