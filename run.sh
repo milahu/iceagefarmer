@@ -10,8 +10,8 @@ do
 
 ./sync.sh
 ./build.sh
-git commit -a -m "update"
-git push github
+git commit -a -m "update" || true # allow to fail (no update)
+git push
 
 echo "last run: $(date)"
 echo "next run: $(date -d+${sleep_minutes}minutes)"
