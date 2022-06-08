@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>{%
-  set page_title = config.page_title.format(group=config.group, date=month.label, page=pagination.current)
-  %}{%
+  set page_title = config.page_title.format(group=config.group, date=month.label, page=pagination.current) %}{%
   set meta_description = config.meta_description.format(group=config.group, date=config.date)
   %}
   <title>{{ page_title }}</title>
@@ -44,21 +43,24 @@
         <div class="logo">
           <a href="{{ config.site_url }}"><img src="static/logo.svg" alt="" /></a>
           <div class="desc">
-            <a href="{{ config.telegram_url.format(id=config.group) }}" rel="noreferer nopener nofollow">@{{ config.group }}</a> /
+            <a href="{{ config.telegram_url.format(id=config.group) }}" rel="noreferer nopener nofollow">{{ config.group }}</a> /
             {{ config.site_description.format(group=config.group, date=config.date) }}
           </div>
         </div>
       </header>
       <ul class="timeline index">{%
         for year, months in timeline.items() | reverse %}
-        <li class="">
+        <li>
           <h3 class="year"><a href="{{ months[0].slug }}.html">{{ year }}</a></h3>
           <ul class="months">{%
             for m in months | reverse %}
-            <li class="{% if m.slug == month.slug %}selected{% endif %}">
+            <li{% if m.slug == month.slug %} class="selected"{% endif %}>
               <a href="{{ m.slug }}.html">
-                {{ m.label }}
-              </span></a>
+                {{ m.label }}{%
+                if config.show_count_per_month %}
+                <span class="count">({{ m.count }})</span>{%
+                endif %}
+              </a>
             </li>{%
             endfor %}
           </ul>
@@ -91,8 +93,13 @@
         if loop.index0 == 0 or day != messages[loop.index0 - 1].date.strftime("%d %B %Y")
         %}
         <li class="day" id="{{ m.date.strftime('%Y-%m-%d') }}">
-          <span class="title">{{ day }} <span class="count">({{ dayline[m.date.strftime("%Y-%m-%d")].count }} messages)</span></span>
-        </li>{%
+          <span class="title">
+            {{ day }}{%
+            if config.show_count_per_day %}
+            <span class="count">({{ dayline[m.date.strftime("%Y-%m-%d")].count }} messages)</span>{%
+            endif %}
+          </span>
+        </li>{{"\n"}}{%
         endif %}
         <li class="message type-{{ m.type }}" id="{{ m.id }}">
           <div class="avatar">{%
@@ -113,22 +120,19 @@
                 %}
               </a>{%
               if m.reply_to %}
-
               <a class="reply" href="{{ page_ids[m.reply_to] }}#{{ m.reply_to }}">↶ Reply to #{{ m.reply_to }}</a>{%
               endif %}
-
               <a class="id" href="#{{ m.id }}">#{{ m.id }}</a>{%
               if m.user.tags %}{%
               for t in m.user.tags %}
                 <span class="tags">{{ t }}</span>{%
               endfor %}{%
               endif %}
-
               <span class="date">{{ m.date.strftime("%I:%M %p, %d %b %Y") }}</span>
             </div>
             <div class="text">{%
-              if m.type == "message" %}
-              {{ nl2br(m.content | escape) | safe | urlize }}{%
+              if m.type == "message" %}{{"\n"}}{{
+                nl2br(m.content | escape) | safe | urlize }}{%
               else %}{%
               if m.type == "user_joined" %}
               Joined.{%
@@ -138,12 +142,11 @@
               endif %}
             </div>{%
             if m.media %}
-
             <div class="media">{%
               if m.media.type == "webpage" and (m.media.title or m.media.description) %}
               <a href="{{ m.media.url }}" rel="noreferer nopener nofollow">{{ m.media.title or "Link" }}</a>{%
               if m.media.description %}
-              <p>{{ m.media.description }}</p>{%
+              <div>{{ m.media.description }}</div>{%
               endif %}{%
               elif m.media.type == "poll" %}
               <div class="poll">
@@ -172,7 +175,7 @@
             </div>{%
             endif %}
           </div>
-        </li>{%
+        </li>{{"\n"}}{%
         endfor %}
       </ul>{%
       if pagination.total > 1 %}
@@ -185,7 +188,7 @@
         endfor %}
       </ul>{%
       endif %}
-    </section><!-- content -->
+    </section>
 
     <section class="dayline">{%
       if config.show_day_index %}
@@ -193,14 +196,17 @@
         for _, d in dayline.items() %}
         <li class="day-{{ d.slug }}">
           <a href="{{ make_filename(month, d.page) }}#{{ d.slug }}">
-            {{ d.date.strftime("%d %b %Y") }} <span class="count">({{ d.count }})</span>
+            {{ d.date.strftime("%d %b %Y") }}{%
+            if config.show_count_per_day %}
+            <span class="count">({{ d.count }})</span>{%
+            endif %}
           </a>
         </li>{%
         endfor %}
       </ul>{%
       endif %}
     </section>
-  </div><!-- container -->
+  </div>
 </div>
 <script src="static/main.js"></script>
 </body>
