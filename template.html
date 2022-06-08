@@ -113,9 +113,9 @@
               <a href="{{ config.telegram_url.format(id=m.user.username) }}" class="username" rel="noreferer nopener nofollow">
                 {%
                 if config.show_sender_fullname
-                %}{{ m.user.first_name }} {{ m.user.last_name }} (@{{ m.user.username }}){%
+                %}{{ m.user.first_name }} {{ m.user.last_name }} ({{ m.user.username }}){%
                 else
-                %}@{{ m.user.username }}{%
+                %}{{ m.user.username }}{%
                 endif
                 %}
               </a>{%
