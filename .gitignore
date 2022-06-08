@@ -1,3 +1,5 @@
 data.sqlite
 session.session
 secret.sh
+site/index.xml
+site/index.atom
