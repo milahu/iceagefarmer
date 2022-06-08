@@ -3,6 +3,8 @@
 set -e
 set -x
 
+sleep_minutes=60
+
 while true
 do
 
@@ -12,7 +14,7 @@ git commit -a -m "update"
 git push github
 
 echo "last run: $(date)"
-echo "next run: $(date -d+6hours)"
-sleep 6h
+echo "next run: $(date -d+${sleep_minutes}minutes)"
+sleep ${sleep_minutes}m
 
 done
