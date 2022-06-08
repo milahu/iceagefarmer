@@ -13,5 +13,9 @@ echo making timeless build
 sed -i -E 's|<lastBuildDate>[^<]+</lastBuildDate>||g' site/index.xml
 sed -i -E 's|<updated>[^<]+</updated>||g' site/index.atom
 
-echo prettify xml to reduce diff noise
-sed -i 's/></>\n</g' site/index.atom site/index.xml
+#echo prettify xml to reduce diff noise
+#sed -i 's/></>\n</g' site/index.atom site/index.xml
+# done in https://github.com/knadh/tg-archive/pull/70
+
+echo fix indent in xml files
+sed -i -E 's/^ +$//' site/index.atom site/index.xml
