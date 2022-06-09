@@ -10,6 +10,7 @@ do
 
 ./sync.sh
 ./build.sh
+git status
 git add media/ # add new files
 git commit -a -m "update" || true # allow to fail (no update)
 git push
