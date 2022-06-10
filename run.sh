@@ -13,7 +13,7 @@ do
 git status
 git add media/ # add new files
 git commit -a -m "update" || true # allow to fail (no update)
-git push
+git push || true # allow to fail (network errors)
 
 echo "last run: $(date)"
 echo "next run: $(date -d+${sleep_minutes}minutes)"
