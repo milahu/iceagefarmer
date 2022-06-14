@@ -110,7 +110,7 @@ python3Packages.buildPythonApplication rec {
   patches = [
     (fetchpatch {
       url = "https://github.com/knadh/tg-archive/pull/69.diff";
-      sha256 = "sha256-XnN0QdCgEazjo62AyWrLpccTgM14oSoLAgWBZP3KIFE=";
+      sha256 = "sha256-hb9UbrXxw+0nqvy4dHo+HY9T6opM9xCLCFjoK6k2Aas=";
     })
   ];
 
