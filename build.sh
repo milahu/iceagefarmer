@@ -3,7 +3,7 @@
 ./tg-archive.sh -b --symlink
 
 echo removing old symlinks
-find . -maxdepth 1 -type l -print0 | xargs -0 rm
+find . -maxdepth 1 -type l -not -name result -print0 | xargs -0 rm
 
 echo creating new symlinks
 ln -s site/* ./ || true # allow to fail
