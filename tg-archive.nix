@@ -96,31 +96,24 @@ in
 
 python3Packages.buildPythonApplication rec {
   pname = "tg-archive";
-  version = "unstable-2022-06-08";
+  version = "unstable-2022-06-14";
+
   src = fetchFromGitHub {
     owner = "knadh";
     repo = "tg-archive";
-    rev = "4e993994229a3cb83e7647bea250ba18a572ca09";
-    sha256 = "sha256-8qlj0J/qi3kTvDwkv5o1MNYPGNhuvX/B/lYD56zetys=";
+    rev = "c410b07859af4e3254bdd5ac65c8200251682202";
+    sha256 = "sha256-eSilX35sUGEbj/6FAvYfupq2wolhmNMXBlQRsPy0jvg=";
   };
-  # relax dependencies
-  postPatch = ''
-    sed -i 's/==/>=/' requirements.txt
-  '';
+
+  #src = ./src/tg-archive;
+
   patches = [
     (fetchpatch {
-      url = "https://github.com/knadh/tg-archive/pull/61.diff";
-      sha256 = "sha256-XQFW715HbrxFUUYfKhwk7/IQ7Cnbjtqk32Pq7q/tn3M=";
-    })
-    (fetchpatch {
-      url = "https://github.com/knadh/tg-archive/pull/63.diff";
-      sha256 = "sha256-49ZCrYH5r3ekcv51pJPoHHVfhu1GzEMhfXjvlPBiQn8=";
-    })
-    (fetchpatch {
-      url = "https://github.com/knadh/tg-archive/pull/70.diff";
-      sha256 = "sha256-4xm6XCa/DzRDHHxbBZDTruPh0fhanf9qFivhEqZme3w=";
+      url = "https://github.com/knadh/tg-archive/pull/69.diff";
+      sha256 = "sha256-XnN0QdCgEazjo62AyWrLpccTgM14oSoLAgWBZP3KIFE=";
     })
   ];
+
   propagatedBuildInputs = with python3Packages; [
     #python-telegram-bot # gi
     telethon
