@@ -11,7 +11,7 @@ do
 ./sync.sh
 ./build.sh
 git status
-git add media/ *.html site/*.html # add new files
+git add media/ *.html site/*.html site/index.* # add new files
 git commit -a -m "update" || true # allow to fail (no update)
 git push || true # allow to fail (network errors)
 
