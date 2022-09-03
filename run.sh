@@ -8,7 +8,7 @@ sleep_minutes=60
 while true
 do
 
-./sync.sh
+timeout 120 ./sync.sh
 ./build.sh
 git status
 git add media/ *.html site/*.html site/index.* # add new files
