@@ -110,13 +110,24 @@ python3Packages.buildPythonApplication rec {
   patches = [
     (fetchpatch {
       url = "https://github.com/knadh/tg-archive/pull/69.diff";
-      sha256 = "sha256-hb9UbrXxw+0nqvy4dHo+HY9T6opM9xCLCFjoK6k2Aas=";
+      sha256 = "sha256-XnN0QdCgEazjo62AyWrLpccTgM14oSoLAgWBZP3KIFE=";
     })
   ];
 
   propagatedBuildInputs = with python3Packages; [
     #python-telegram-bot # gi
-    telethon
+    (telethon.overridePythonAttrs (old: {
+
+# "Closing current connection to begin reconnect" can hang forever
+# https://github.com/LonamiWebs/Telethon/issues/3917
+src = fetchFromGitHub {
+owner = "LonamiWebs";
+repo = "Telethon";
+rev = "346a3f0ef5652111c7bc167d4ccef5eb851c7901";
+sha256 = "sha256-CACC/D4pcXog4cXX07zyAXCqJql9FN8f/FDOGYXEd/U=";
+};
+
+    }))
     jinja2
     pyyaml # PyYAML
     cryptg
