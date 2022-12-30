@@ -3,7 +3,8 @@
 set -e
 set -x
 
-sleep_minutes=60
+#sleep_minutes=60
+sleep_minutes=$((60 * 12)) # 12 hours
 
 while true
 do
