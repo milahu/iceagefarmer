@@ -17,5 +17,9 @@ sed -i -E 's|<updated>[^<]+</updated>||g' site/index.atom
 #sed -i 's/></>\n</g' site/index.atom site/index.xml
 # done in https://github.com/knadh/tg-archive/pull/70
 
-echo remove trailing whitespace in xml files
-sed -i -E 's/ +$//' site/index.atom site/index.xml
+echo remove trailing whitespace
+sed -i -E 's/ +$//' site/*.{html,xml,atom}
+
+# fix: "tg-archive -b" does no longer preserve HTML in site_description
+echo patching site_description
+sed -i 's|{{{{{site_description}}}}}|<br>Telegram archive<br><div class="github-url" style="display:inline">(<a href="https://github.com/milahu/iceagefarmer">Github</a>)</div>|' site/*.{html,xml,atom}
