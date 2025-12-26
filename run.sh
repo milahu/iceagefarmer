@@ -6,14 +6,16 @@ set -x
 #sleep_minutes=60
 sleep_minutes=$((60 * 12)) # 12 hours
 
+sync_timeout=$((60 * 30)) # 30 minutes
+
 while true
 do
 
 # no, this fails to read from stdin at
 # "Please enter your phone (or bot token): "
 # https://github.com/LonamiWebs/Telethon/blob/05b848885810b5c2633197f87094ec3bfc330f0f/telethon/client/auth.py#L22
-# timeout 120 ./sync.sh
-script -q -c "timeout 120 ./sync.sh" /dev/null
+# timeout $sync_timeout ./sync.sh
+time script -q -c "timeout $sync_timeout ./sync.sh" /dev/null
 
 ./build.sh
 git status
