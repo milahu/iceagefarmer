@@ -3,7 +3,7 @@
   <channel>
     <title>iceagefarmer Telegram archive</title>
     <link>https://milahu.github.io/iceagefarmer</link>
-    <description>{{{{{<br>Telegram archive<br><div class="github-url" style="display:inline">(<a href="https://github.com/milahu/iceagefarmer">Github</a>)</div>}}}}}</description>
+    <description>&lt;br&gt;Telegram archive&lt;br&gt;&lt;div class="github-url" style="display:inline"&gt;(&lt;a href="https://github.com/milahu/iceagefarmer"&gt;Github&lt;/a&gt;)&lt;/div&gt;</description>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>tg-archive 1.3.0</generator>
 
