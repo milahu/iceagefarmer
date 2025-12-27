@@ -66,9 +66,7 @@ site_logo: "media/avatar_1392849104.jpg"
 site_favicon: "media/avatar_1392849104.jpg"
 extra_style: 'div.logo > a { display: block; height: 64px; width: 64px; border-radius: 100%; position: relative; overflow: hidden; }'
 site_name: "{group} Telegram archive"
-# site_description: '<br>Telegram archive<br><div class="github-url" style="display:inline">(<a href="https://github.com/milahu/iceagefarmer">Github</a>)</div>'
-# fix: "tg-archive -b" does no longer preserve HTML in site_description
-site_description: '{{{{{{{{{{site_description}}}}}}}}}}'
+site_description: '<br>Telegram archive<br><div class="github-url" style="display:inline">(<a href="https://github.com/milahu/iceagefarmer">Github</a>)</div>'
 meta_description: "{group} Telegram archive"
 page_title: "{group} Telegram archive on {date} page {page}"
 

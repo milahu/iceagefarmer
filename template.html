@@ -28,7 +28,7 @@
   <link href="static/style.css" rel="stylesheet" type="text/css" />
   {% if config.extra_style %}
   <style type="text/css">
-    {{config.extra_style}}
+    {{ config.extra_style | safe }}
   </style>
   {% endif %}
 </head>
@@ -50,7 +50,7 @@
           </a>
           <div class="desc">
             <a href="{{ config.telegram_url.format(id=config.group) }}" rel="noreferer nopener nofollow">{{ config.group }}</a>
-            {{ config.site_description.format(group=config.group, date=config.date) }}
+            {{ config.site_description.format(group=config.group, date=config.date) | safe }}
           </div>
         </div>
       </header>
